@@ -1,0 +1,18 @@
+<div class="thumbnail well hoverwell pad-left">
+    <h1> {{ eventData?.name }} </h1>
+    <div>Date : {{ eventData?.date }}</div>
+    <div [ngClass]="addClass()" [ngSwitch]="eventData?.time">Time: {{ eventData?.time }}
+        <span *ngSwitchCase="'8:00 am'">(Early Start)</span>
+        <span *ngSwitchCase="'10:00 am'">(Late Start)</span>
+        <span *ngSwitchDefault>(Normal Start)</span>
+    </div>
+    <div>Price: ${{ eventData?.price }}</div>
+    <div *ngIf="eventData?.location">
+        <div>Address: {{ eventData?.location?.address }}</div>
+        <div>City: {{ eventData?.location?.city }}</div>
+        <div>Country: {{ eventData?.location?.country }}</div> 
+    </div>
+    <div [hidden]="!eventData?.onlineUrl">
+        <div>Online url : {{ eventData?.onlineUrl }}</div>
+    </div>
+</div>
